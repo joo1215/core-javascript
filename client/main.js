@@ -38,22 +38,37 @@ const [rollingDiceButton,recordButton,resetButton] = getNodes('.buttonGroup > bu
 const recordListWrapper = getNode('.recordListWrapper')
 
 
+// 특정 대상의 속성값을 가져오거나 / 설정할 수 있는 함수 
 
+
+let count = 0;
 
 function renderRecordListItem(){
   
   let template = /* html */ `
     <tr>
-      <td>0</td>
+      <td>${++count}</td>  // 회차 증가
       <td>5</td>
       <td>5</td>
     </tr>
   `
   
   insertLast('.recordListWrapper tbody',template)
-  
-  
+   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
