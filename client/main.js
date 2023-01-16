@@ -5,10 +5,12 @@ import {
   disableElement, 
   enableElement, 
   getNode, 
+  clearContents,
   getNodes,
   insertLast,
   visibleElement,
-  invisibleElement
+  invisibleElement,
+  attr
  } from "./lib/index.js";
 
 
@@ -42,19 +44,22 @@ const recordListWrapper = getNode('.recordListWrapper')
 
 
 let count = 0;
+let total = 0;
 
 function renderRecordListItem(){
   
+  let diceValue = Number(attr('#cube','data-dice'));
+
   let template = /* html */ `
     <tr>
       <td>${++count}</td>  // 회차 증가
-      <td>5</td>
-      <td>5</td>
+      <td>${diceValue}</td>
+      <td>${total += diceValue}</td>
     </tr>
   `
   
   insertLast('.recordListWrapper tbody',template)
-   
+  recordListWrapper.scrollTop = recordListWrapper.scrollHeight
 }
 
 
@@ -113,7 +118,8 @@ const handleRecord =()=>{
 
 const handleReset = () => {
 
-  invisibleElement(recordListWrapper)
+  invisibleElement(recordListWrapper);
+  clearContents('.recordListWrapper tbody')
 }
 
 
