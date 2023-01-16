@@ -6,6 +6,7 @@ import {
   enableElement, 
   getNode, 
   getNodes,
+  insertLast,
   visibleElement,
   invisibleElement
  } from "./lib/index.js";
@@ -40,6 +41,17 @@ const recordListWrapper = getNode('.recordListWrapper')
 
 
 function renderRecordListItem(){
+  
+  let template = /* html */ `
+    <tr>
+      <td>0</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+  `
+  
+  insertLast('.recordListWrapper tbody',template)
+  
   
 }
 
@@ -81,7 +93,6 @@ const handleRollingDice = (() => {
 const handleRecord =()=>{
   
   visibleElement(recordListWrapper);
-
   renderRecordListItem();
 }
 
